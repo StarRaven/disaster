@@ -1,10 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
+
+import { AppComponent } from './app.component';
+
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
-import { AppComponent } from './app.component';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
 
@@ -17,6 +21,7 @@ import { AuthService } from './services/auth.service';
     BrowserModule,
     FormsModule,
     HttpModule,
+    MatButtonModule, MatCheckboxModule,
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent }
     ])

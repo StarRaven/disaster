@@ -1,0 +1,35 @@
+.half {
+  width: 35%;
+  padding: 0 30px;
+}
+
+.whole {
+  width: 35%;
+  display: block;
+  padding: 0 30px;
+}
+
+.form-wrapper {
+  width: 800px;
+  padding: 42px 100px;
+}
+
+.mat-form-field {
+  margin: 30px 0;
+}
+
+.ok-button {
+  background: url("/assets/images/Submit.png");
+  background-repeat: no-repeat;
+  width: 41px;
+  height: 41px;
+  border: none;
+}
+
+.cancel-button {
+  background: url("/assets/images/Cancel.png");
+  background-repeat: no-repeat;
+  width: 41px;
+  height: 41px;
+  border: none;
+}

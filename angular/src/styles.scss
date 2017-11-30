@@ -1,2 +1,102 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+body {
+  margin: 0 !important;
+}
+
+.form-title {
+  margin-top: 20px;
+  padding: 0 30px;
+  color: #ffffff;
+  font-size: 30px;
+}
+
+.title-wrapper {
+  margin: 20px 0;
+  color: #ffffff;
+  font-size: 30px;
+}
+
+.mat-drawer-container {
+  height: 984px;
+}
+
+.content-wrapper {
+  background: #363535;
+  height: 100%;
+  width: 100%;
+}
+
+.content {
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #ffffff;
+  height: 100%;
+}
+
+.left-wrapper {
+  width: 750px;
+  height: 60%;
+  padding: 42px 100px;
+  display: inline-block;
+}
+
+.right-wrapper {
+  width: 435px;
+  float: right;
+  padding-top: 42px;
+}
+
+.right-sidebar-button {
+  line-height: 45px;
+  display: block;
+  border: none;
+  background: none;
+  color: #ffffff;
+  font-size: 30px;
+}
+
+.mat-primary {
+  color: #ffffff;
+}
+
+button {
+  cursor: pointer;
+}
+
+.mat-form-field-placeholder {
+  color: #ffffff !important;
+}
+
+.mat-focused {
+  color: #ffffff;
+}
+
+.mat-form-field-underline {
+  background-color: #ffffff;
+}
+
+.mat-form-field-ripple {
+  background-color: #ffffff;
+}
+
+.mat-radio-label {
+  color: #ffffff;
+}
+
+.mat-radio-outer-circle {
+  border-color: #ffffff;
+}
+
+.mat-primary {
+  color: #ffffff;
+}
+
+.mat-select-value {
+  color: #ffffff;
+}
+
+.mat-select-arrow {
+  color: #ffffff !important;
+}

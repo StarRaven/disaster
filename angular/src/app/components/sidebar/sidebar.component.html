@@ -1,5 +1,5 @@
 <div class="sidebar-wrapper">
-<button mat-menu-item class="not-chosen" (click)="Logout()">
+<button mat-menu-item class="not-chosen" (click)="router.navigate(['home']);">
   <span>Home</span>
 </button>
 <button mat-menu-item [ngClass]="(url=='/family')?'chosen':'not-chosen'" (click)="router.navigate(['family']);">
@@ -25,5 +25,15 @@
 </button>
 <button mat-menu-item class="not-chosen" (click)="Logout()">
   <span>Communication</span>
+</button>
+<br>
+<br>
+<br>
+<br>
+<button mat-menu-item class="not-chosen" (click)="Logout()">
+  <span>Tips</span>
+</button>
+<button mat-menu-item class="not-chosen" (click)="Logout()">
+  <span>Shopping List</span>
 </button>
 </div>

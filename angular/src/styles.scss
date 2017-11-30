@@ -3,18 +3,19 @@
 
 body {
   margin: 0 !important;
+  font-family: "Microsoft YaHei","SimHei";
 }
 
 .form-title {
   margin-top: 20px;
   padding: 0 30px;
-  color: #ffffff;
+  color: #b0afaf;
   font-size: 30px;
 }
 
 .title-wrapper {
   margin: 20px 0;
-  color: #ffffff;
+  color: #b0afaf;
   font-size: 30px;
 }
 
@@ -31,7 +32,7 @@ body {
 .content {
   border-right-style: solid;
   border-right-width: 2px;
-  border-right-color: #ffffff;
+  border-right-color: #b0afaf;
   height: 100%;
 }
 
@@ -43,20 +44,25 @@ body {
 }
 
 .right-wrapper {
-  width: 435px;
+  width: 500px;
   float: right;
   padding-top: 42px;
 }
 
 .right-sidebar-button {
-  line-height: 45px;
+  line-height: 65px;
   display: block;
   border: none;
   background: none;
-  color: #ffffff;
-  font-size: 30px;
+  color: #b0afaf;
+  font-size: 25px;
 }
 
+.right-title{
+  margin-top: 20px;
+  color: #b0afaf;
+  font-size: 30px;
+}
 .mat-primary {
   color: #ffffff;
 }
@@ -66,37 +72,41 @@ button {
 }
 
 .mat-form-field-placeholder {
-  color: #ffffff !important;
+  color: #b0afaf !important;
 }
 
 .mat-focused {
-  color: #ffffff;
+  color: #b0afaf;
 }
 
 .mat-form-field-underline {
-  background-color: #ffffff;
+  background-color: #b0afaf;
 }
 
 .mat-form-field-ripple {
-  background-color: #ffffff;
+  background-color: #b0afaf;
 }
 
 .mat-radio-label {
-  color: #ffffff;
+  color: #b0afaf;
 }
 
 .mat-radio-outer-circle {
-  border-color: #ffffff;
+  border-color: #b0afaf;
 }
 
 .mat-primary {
-  color: #ffffff;
+  color: #b0afaf;
 }
 
 .mat-select-value {
-  color: #ffffff;
+  color: #b0afaf;
 }
 
 .mat-select-arrow {
-  color: #ffffff !important;
+  color: #b0afaf !important;
+}
+
+.mat-checkbox-frame{
+  border-color: #b0afaf;
 }

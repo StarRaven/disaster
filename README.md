@@ -10,3 +10,4 @@
 ## Restful API
 - Document: docs/rest-api.pdf(unpublished yet)
 
+npm install chart.js --save

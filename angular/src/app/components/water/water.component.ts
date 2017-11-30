@@ -25,9 +25,9 @@ export class WaterComponent implements OnInit {
         {
           "data": [100, 100, 100],   // Example data
           "backgroundColor": [
-            "#1fc8f8",
-            "#76a346",
-            "#000000"
+            "#a9a9a9",
+            "#9294de",
+            "#92d5dd"
           ]
         }]
     };

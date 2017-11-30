@@ -1,0 +1,31 @@
+<app-header></app-header>
+<div class="home-content">
+  <div class="home-form-wrapper">
+    <form [formGroup]="disaster_date" (ngSubmit)="DisasterDate()">
+      <mat-form-field class="home-form">
+        <mat-select formControlName="disaster" placeholder="Choose Disaster Type">
+          <mat-option value="Flood">
+            Flood
+          </mat-option>
+          <mat-option value="Fire">
+            Fire
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="home-form">
+        <input matInput formControlName="startdate" [matDatepicker]="picker_start_date" placeholder="Choose a start date">
+        <mat-datepicker-toggle matSuffix [for]="picker_start_date"></mat-datepicker-toggle>
+        <mat-datepicker #picker_start_date></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="home-form">
+        <input matInput formControlName="enddate" [matDatepicker]="picker_end_date" placeholder="Choose a end date">
+        <mat-datepicker-toggle matSuffix [for]="picker_end_date"></mat-datepicker-toggle>
+        <mat-datepicker #picker_end_date></mat-datepicker>
+      </mat-form-field>
+      <div class="home-form-button-wrapper">
+      <button type="submit" class="home-form home-form-button">
+      </button>
+    </div>
+    </form>
+  </div>
+</div>

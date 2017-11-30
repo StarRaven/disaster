@@ -7,8 +7,7 @@
 
 .left-header {
   height: 100%;
-  width: 150px;
-  float: left;
+  width: 400px;
   display: flex;
   align-items: center;
 }
@@ -21,13 +20,13 @@
 
 .header-title {
   color: #ffffff;
-  display: inline-block;
 }
 
 .header-operations {
-  position: relative;
+  position: absolute;
   right: 50px;
-  top: 50%;
-  transform: translateY(-50%);
-  float: right;
+}
+
+.header-title-text {
+  font-size: 35px;
 }

@@ -9,9 +9,43 @@
         Weather
       </div>
       <div class="content">
-        <div style="width: 720px;"><iframe style="display: block;" src="https://cdnres.willyweather.com/widget/loadView.html?id=76739" width="720" height="92" frameborder="0" scrolling="no"></iframe><a style="z-index: 1;text-indent: -9999em;margin: -92px 0 0 0;height: 92px;width: 20px;float: right;position: relative"
-            href="https://www.willyweather.com/pa/allegheny-county/pittsburgh.html" rel="nofollow">willyweather</a></div>
+        <div style="width: 700px;"><iframe style="display: block;" src="https://cdnres.willyweather.com/widget/loadView.html?id=76747" width="700" height="520" frameborder="0" scrolling="no"></iframe><a style="height: 20px;text-indent: -9999em;z-index: 1;display: block;position: relative;margin: -20px 0 0 0"
+            href="https://www.willyweather.com/pa/allegheny-county/pittsburgh.html" rel="nofollow">pittsburgh weather</a></div>
       </div>
+      <button class="right-sidebar-button">
+        + Add to Contrast
+      </button>
+      <button class="right-sidebar-button">
+        + Add Memo
+      </button>
+    </div>
+    <div class="right-wrapper">
+      <div class="clothing-bedding-list">
+        <div class="title-wrapper">
+          Clothing
+        </div>
+        <mat-checkbox class="cb-check-list" [(ngModel)]="Sweater">Sweater</mat-checkbox>
+        <mat-checkbox class="cb-check-list" [(ngModel)]="Gloves">Gloves</mat-checkbox>
+        <mat-checkbox class="cb-check-list" [(ngModel)]="Jacket">Jacket</mat-checkbox>
+        <mat-checkbox class="cb-check-list" [(ngModel)]="Vest">Vest</mat-checkbox>
+        <mat-checkbox class="cb-check-list" [(ngModel)]="Pants">Pants</mat-checkbox>
+      </div>
+      <div class="clothing-bedding-list">
+        <div class="title-wrapper">
+          Bedding
+        </div>
+        <mat-checkbox class="cb-check-list" [(ngModel)]="Blanket">Blanket</mat-checkbox>
+        <mat-checkbox class="cb-check-list" [(ngModel)]="Quilt">Quilt</mat-checkbox>
+        <mat-checkbox class="cb-check-list" [(ngModel)]="Sheet">Sheet</mat-checkbox>
+        <mat-checkbox class="cb-check-list" [(ngModel)]="Mattress">Mattress</mat-checkbox>
+        <mat-checkbox class="cb-check-list" [(ngModel)]="Duvet">Duvet</mat-checkbox>
+      </div>
+      <br>
+      <br>
+      <br>
+      <button class="right-sidebar-button">
+        + Export List
+      </button>
     </div>
   </div>
 </mat-sidenav-container>

@@ -1,0 +1,34 @@
+.home-content {
+  background-image: url("/assets/images/cover.png");
+  background-color: #000000;
+  background-size: cover;
+  width: 100%;
+  height: 800px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.home-form-wrapper {
+  width: 100%;
+  text-align: center;
+}
+
+.home-form {
+  padding: 0 10px;
+}
+
+.home-form-button-wrapper {
+  height: 50px;
+  position: relative;
+  top: 12px;
+  display: inline-block;
+}
+
+.home-form-button {
+  background: url("/assets/images/Enter.png");
+  background-repeat: no-repeat;
+  width: 25px;
+  height: 25px;
+  border: none;
+}

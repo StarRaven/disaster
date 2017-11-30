@@ -35,6 +35,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ClothingComponent } from './components/clothing/clothing.component';
 import { WaterComponent } from './components/water/water.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { WaterComponent } from './components/water/water.component';
     SidebarComponent,
     HeaderComponent,
     ClothingComponent,
-    WaterComponent
+    WaterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +79,8 @@ import { WaterComponent } from './components/water/water.component';
       { path: 'login', component: LoginComponent },
       { path: 'family', component: FamilyComponent },
       { path: 'clothing', component: ClothingComponent },
-      { path: 'water', component: WaterComponent }
+      { path: 'water', component: WaterComponent },
+      { path: 'home', component: HomeComponent },
     ])
   ],
   providers: [AuthService],

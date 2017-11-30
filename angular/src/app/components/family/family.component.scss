@@ -10,8 +10,12 @@
 }
 
 .form-wrapper {
-  width: 800px;
-  padding: 42px 100px;
+  width: 750px;
+  float: left;
+  padding: 42px 0 42px 100px;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #b0afaf;
 }
 
 .mat-form-field {

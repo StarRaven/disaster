@@ -1,3 +1,32 @@
-<h1>Login</h1>
-
-<p>{{test}}</p>
+<mat-tab-group class="demo-tab-group">
+  <mat-tab label="Login">
+    <div class="demo-tab-content small-login">
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="login_username" placeholder="Enter your username">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="login_password" placeholder="Enter your password" [type]="hide1 ? 'password' : 'text'">
+        <mat-icon matSuffix (click)="hide1 = !hide1">{{hide1 ? 'visibility' : 'visibility_off'}}</mat-icon>
+      </mat-form-field>
+      <br>
+      <br>
+      <button mat-raised-button color="primary" (click)="Login()">Login</button>
+    </div>
+  </mat-tab>
+  <mat-tab label="Register">
+    <div class="demo-tab-content small-login">
+      <br>
+      <mat-form-field>
+        <input matInput [(ngModel)]="register_username" placeholder="Enter your username">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="register_password" placeholder="Enter your password" [type]="hide2 ? 'password' : 'text'">
+        <mat-icon matSuffix (click)="hide2 = !hide2">{{hide2 ? 'visibility' : 'visibility_off'}}</mat-icon>
+      </mat-form-field>
+      <br>
+      <br>
+      <button mat-raised-button color="primary" (click)="Register()">Register</button>
+    </div>
+  </mat-tab>
+</mat-tab-group>

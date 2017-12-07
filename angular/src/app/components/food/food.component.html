@@ -1,0 +1,54 @@
+<app-header></app-header>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" opened="true" class="example-sidenav">
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <div class="content-wrapper">
+    <div class="left-wrapper">
+      <mat-table #table1 [dataSource]="dataSource">
+        <ng-container matColumnDef="type">
+          <mat-header-cell *matHeaderCellDef> Food Type </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="calories">
+          <mat-header-cell *matHeaderCellDef> Calories </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.calories}} {{element.servings}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="quantity">
+          <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <input class="input-qty" type="number" min='0' max='99' [(ngModel)]="element.quantity" (change)="update(element.id,element.quantity)" width="30px">
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="total">
+          <mat-header-cell *matHeaderCellDef> Total Calories </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.calories*element.quantity}} </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+    <div class="right-wrapper-chart">
+      <div class="title-wrapper">
+        Graphic
+      </div>
+      <br>
+      <canvas #donut width="350" height="350"></canvas>
+      <br>
+      <br>
+      <br>
+      <br>
+      <a class="right-sidebar-button">
+      Total Calories : {{total}}
+    </a>
+    </div>
+  </div>
+  <div class="below-operations">
+    <img class="below-single-operation" src="/assets/images/Line.png" />
+    <img class="below-single-operation" (click)="openMemoDialog()" src="/assets/images/Memo.png" />
+    <img class="below-single-operation" onclick='window.print()' src="/assets/images/Print.png" />
+    <img class="below-single-operation" src="/assets/images/Refresh.png" />
+    <img class="below-single-operation" src="/assets/images/Add.png" />
+  </div>
+
+</mat-sidenav-container>

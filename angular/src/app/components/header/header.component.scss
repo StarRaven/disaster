@@ -15,18 +15,32 @@
 .header-icon {
   height: 72px;
   width: 50px;
-  margin: auto;
+  margin: 35px;
 }
 
 .header-title {
   color: #ffffff;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
 }
 
 .header-operations {
   position: absolute;
   right: 50px;
+  display: flex;
 }
 
 .header-title-text {
   font-size: 35px;
+}
+
+.header-single-operation {
+  cursor: pointer;
+}
+
+.username-text {
+  color: #ffffff;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  font-size: 30px;
+  display: inline-block;
+  margin-right: 20px;
 }

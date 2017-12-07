@@ -31,7 +31,7 @@
         </div>
       </div>
     </div>
-    <div class="right-wrapper">
+    <div class="right-wrapper-chart">
       <div class="title-wrapper">
         Graphic
       </div>
@@ -41,12 +41,14 @@
       <br>
       <br>
       <br>
-      <button class="right-sidebar-button">
-        + Add More
-      </button>
-      <button class="right-sidebar-button">
-        + Add Memo
-      </button>
+
+    </div>
+    <div class="below-operations">
+      <img class="below-single-operation" src="/assets/images/Line.png" />
+      <img class="below-single-operation" (click)="openMemoDialog()" src="/assets/images/Memo.png" />
+      <img class="below-single-operation" onclick='window.print()' src="/assets/images/Print.png" />
+      <img class="below-single-operation" src="/assets/images/Refresh.png" />
+      <img class="below-single-operation" src="/assets/images/Add.png" />
     </div>
   </div>
 </mat-sidenav-container>

@@ -1,0 +1,15 @@
+
+<app-header></app-header>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" opened="true" class="example-sidenav">
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <div class="content-wrapper">
+    <iframe width="100%" height="600px" frameborder="0" style="border:0" [src]=trusturl allowfullscreen></iframe>
+  </div>
+  <div class="below-operations">
+    <img class="below-single-operation" src="/assets/images/Line.png" />
+    <img class="below-single-operation" (click)="openMemoDialog()" src="/assets/images/Memo.png" />
+    <img class="below-single-operation" onclick='window.print()' src="/assets/images/Print.png" />
+  </div>
+</mat-sidenav-container>

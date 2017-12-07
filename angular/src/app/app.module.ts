@@ -28,6 +28,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material';
 
+import { GlobalService } from './global.service';
 import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
 import { FamilyComponent } from './components/family/family.component';
@@ -36,6 +37,15 @@ import { HeaderComponent } from './components/header/header.component';
 import { ClothingComponent } from './components/clothing/clothing.component';
 import { WaterComponent } from './components/water/water.component';
 import { HomeComponent } from './components/home/home.component';
+import { FuncbarComponent } from './components/funcbar/funcbar.component';
+import { AddmemoComponent } from './components/addmemo/addmemo.component';
+import { FoodComponent } from './components/food/food.component';
+import { TravelComponent } from './components/travel/travel.component';
+import { CommunicationComponent } from './components/communication/communication.component';
+import { StorageComponent } from './components/storage/storage.component';
+import { TipsComponent } from './components/tips/tips.component';
+import { MemoComponent } from './components/memo/memo.component';
+
 
 @NgModule({
   declarations: [
@@ -46,7 +56,15 @@ import { HomeComponent } from './components/home/home.component';
     HeaderComponent,
     ClothingComponent,
     WaterComponent,
-    HomeComponent
+    HomeComponent,
+    FuncbarComponent,
+    AddmemoComponent,
+    FoodComponent,
+    TravelComponent,
+    CommunicationComponent,
+    StorageComponent,
+    TipsComponent,
+    MemoComponent
   ],
   imports: [
     BrowserModule,
@@ -76,14 +94,28 @@ import { HomeComponent } from './components/home/home.component';
     MatNativeDateModule,
 
     RouterModule.forRoot([
+      { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
       { path: 'family', component: FamilyComponent },
       { path: 'clothing', component: ClothingComponent },
       { path: 'water', component: WaterComponent },
+      { path: 'food', component: FoodComponent },
+      { path: 'travel', component: TravelComponent },
+      { path: 'communication', component: CommunicationComponent },
+      { path: 'storage', component: StorageComponent },
+      { path: 'tips', component: TipsComponent },
+      { path: 'memo', component: MemoComponent },
       { path: 'home', component: HomeComponent },
     ])
   ],
-  providers: [AuthService],
+  entryComponents: [
+    AddmemoComponent,
+    LoginComponent,
+  ],
+  providers: [
+    AuthService,
+    GlobalService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

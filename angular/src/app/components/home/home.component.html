@@ -3,12 +3,12 @@
   <div class="home-form-wrapper">
     <form [formGroup]="disaster_date" (ngSubmit)="DisasterDate()">
       <mat-form-field class="home-form">
-        <mat-select formControlName="disaster" placeholder="Choose Disaster Type">
-          <mat-option value="Flood">
-            Flood
+        <mat-select formControlName="disaster" placeholder="Choose Location">
+          <mat-option value="Pittsburgh">
+            Pittsburgh
           </mat-option>
-          <mat-option value="Fire">
-            Fire
+          <mat-option value="New York">
+            New York
           </mat-option>
         </mat-select>
       </mat-form-field>

@@ -12,12 +12,6 @@
         <div style="width: 700px;"><iframe style="display: block;" src="https://cdnres.willyweather.com/widget/loadView.html?id=76747" width="700" height="520" frameborder="0" scrolling="no"></iframe><a style="height: 20px;text-indent: -9999em;z-index: 1;display: block;position: relative;margin: -20px 0 0 0"
             href="https://www.willyweather.com/pa/allegheny-county/pittsburgh.html" rel="nofollow">pittsburgh weather</a></div>
       </div>
-      <button class="right-sidebar-button">
-        + Add to Contrast
-      </button>
-      <button class="right-sidebar-button">
-        + Add Memo
-      </button>
     </div>
     <div class="right-wrapper">
       <div class="clothing-bedding-list">
@@ -43,9 +37,11 @@
       <br>
       <br>
       <br>
-      <button class="right-sidebar-button">
-        + Export List
-      </button>
+    </div>
+    <div class="below-operations">
+      <img class="below-single-operation" src="/assets/images/Line.png" />
+      <img class="below-single-operation" (click)="openMemoDialog()" src="/assets/images/Memo.png" />
+      <img class="below-single-operation" onclick='window.print()' src="/assets/images/Print.png" />
     </div>
   </div>
 </mat-sidenav-container>

@@ -3,7 +3,31 @@
 
 body {
   margin: 0 !important;
-  font-family: "Microsoft YaHei","SimHei";
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+}
+
+.mat-sidenav {
+  background: #1d1c1c !important;
+}
+
+.mat-row {
+  background: #363535;
+  border-bottom-color: transparent;
+}
+
+.mat-header-row {
+  background: #363535;
+  border-bottom-color: transparent;
+}
+
+.mat-cell {
+  color: #b0afaf;
+  font-size: 16px;
+}
+
+.mat-header-cell {
+  color: #b0afaf;
+  font-size: 16px;
 }
 
 .form-title {
@@ -20,13 +44,14 @@ body {
 }
 
 .mat-drawer-container {
-  height: 984px;
+  min-height: 984px;
+  height:100%;
+  background: #363535;
 }
 
 .content-wrapper {
   background: #363535;
-  height: 100%;
-  width: 100%;
+  padding: 100px;
 }
 
 .content {
@@ -39,14 +64,12 @@ body {
 .left-wrapper {
   width: 750px;
   height: 60%;
-  padding: 42px 100px;
-  display: inline-block;
+  float: left;
 }
 
 .right-wrapper {
-  width: 500px;
-  float: right;
-  padding-top: 42px;
+  padding-left: 100px;
+  overflow: auto;
 }
 
 .right-sidebar-button {
@@ -58,11 +81,12 @@ body {
   font-size: 25px;
 }
 
-.right-title{
-  margin-top: 20px;
+.right-title {
+  padding-top: 20px;
   color: #b0afaf;
   font-size: 30px;
 }
+
 .mat-primary {
   color: #ffffff;
 }
@@ -107,6 +131,17 @@ button {
   color: #b0afaf !important;
 }
 
-.mat-checkbox-frame{
+.mat-checkbox-frame {
   border-color: #b0afaf;
+}
+
+.below-operations {
+  clear: both;
+  float: right;
+  padding: 100px;
+}
+
+.below-single-operation {
+  padding: 0 10px;
+  cursor: pointer;
 }

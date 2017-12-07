@@ -8,39 +8,54 @@
       <form [formGroup]="add_family_member" (ngSubmit)="FamilyMemberAdd()">
         <div class="form-title">Member</div>
         <br>
-        <mat-form-field class="half">
-          <input matInput color="warn" formControlName="firstname" placeholder="Enter your first name" required>
-          <mat-error>This field is required</mat-error>
-        </mat-form-field>
-        <mat-form-field class="half">
-          <input matInput formControlName="lastname" placeholder="Enter your last name" required>
-          <mat-error>This field is required</mat-error>
-        </mat-form-field>
-        <mat-radio-group formControlName="gender" style="text-align:left" required>
-          <mat-radio-button value="male" name="male" class="half">Male</mat-radio-button>
-          <mat-radio-button value="female" name="female" class="half">Female</mat-radio-button>
+        <br>
+        <mat-radio-group formControlName="kind" style="text-align:left" required>
+          <mat-radio-button value="human" name="human" class="half">Human</mat-radio-button>
+          <mat-radio-button value="pet" name="pet" class="half">Pet</mat-radio-button>
         </mat-radio-group>
+        <div *ngIf="add_family_member.get('kind').value=='human'">
+          <mat-form-field class="half">
+            <input matInput color="warn" formControlName="firstname" placeholder="Enter your first name" required>
+            <mat-error>This field is required</mat-error>
+          </mat-form-field>
+          <mat-form-field class="half">
+            <input matInput formControlName="lastname" placeholder="Enter your last name" required>
+            <mat-error>This field is required</mat-error>
+          </mat-form-field>
+          <mat-radio-group formControlName="gender" style="text-align:left" required>
+            <mat-radio-button value="male" name="male" class="half">Male</mat-radio-button>
+            <mat-radio-button value="female" name="female" class="half">Female</mat-radio-button>
+          </mat-radio-group>
+          <br>
+          <br>
+          <mat-form-field class="whole">
+            <input matInput formControlName="birthdate" [matDatepicker]="picker" placeholder="Choose your birth date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field class="whole">
+            <input matInput formControlName="phone" placeholder="Enter your phone number" required>
+            <mat-error>This field is required</mat-error>
+          </mat-form-field>
+          <mat-form-field class="whole">
+            <mat-select formControlName="health" placeholder="Health Condition">
+              <mat-option value="healthy">Healthy</mat-option>
+              <mat-option value="ill">Ill</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
         <br>
         <br>
-        <mat-form-field class="whole">
-          <input matInput formControlName="birthdate" [matDatepicker]="picker" placeholder="Choose a date">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field class="whole">
-          <input matInput formControlName="phone" placeholder="Enter your phone number" required>
-          <mat-error>This field is required</mat-error>
-        </mat-form-field>
-        <mat-form-field class="whole">
-          <mat-select formControlName="health" placeholder="Health Condition">
-            <mat-option value="healthy">Healthy</mat-option>
-            <mat-option value="ill">Ill</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <div class="whole">
+        <div *ngIf="!check_valid()" class="whole">
           <button type="submit" class="ok-button">
           </button>
           <button (click)="reset()" class="cancel-button">
+          </button>
+        </div>
+        <div *ngIf="check_valid()" class="whole">
+          <button class="ok-button" matTooltip="Please fill out the form!">
+          </button>
+          <button (click)="add_family_member.reset();" class="cancel-button">
           </button>
         </div>
         <!--
@@ -49,7 +64,7 @@
       </form>
     </div>
     <div class="right-wrapper">
-      <div class="right-title">Operations</div>
+      <div class="right-title">Member Lists</div>
       <br>
       <br>
       <button class="right-sidebar-button">
@@ -65,5 +80,12 @@
         + New Member
       </button>
     </div>
+  </div>
+  <div class="below-operations">
+    <img class="below-single-operation" src="/assets/images/Line.png" />
+    <img class="below-single-operation" (click)="openMemoDialog()" src="/assets/images/Memo.png" />
+    <img class="below-single-operation" onclick='window.print()' src="/assets/images/Print.png" />
+    <img class="below-single-operation" src="/assets/images/Refresh.png" />
+    <img class="below-single-operation" src="/assets/images/Add.png" />
   </div>
 </mat-sidenav-container>

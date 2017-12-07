@@ -1,0 +1,88 @@
+<app-header></app-header>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" opened="true" class="example-sidenav">
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+  <div class="content-wrapper">
+    <div class="tips-content">
+      <div class="tips-header">Water : </div>
+      <ul class="fix-ul">
+        <li>Clean containers</li>
+        <li>Original containers (purchase commercially)</li>
+        <li>Ten drops CL per gallon, stand for 30-60 minutes, boil for 1 min</li>
+        <li>Reuse water for sanitation purposes</li>
+        <li>Treat rain water and ground water</li>
+        <li>Cool before drinking</li>
+        <li>Store water prepared filtering only for 6 months</li>
+        <li>Distilling to make saltwater become drinkable</li>
+      </ul>
+      <br>
+      <div class="tips-header">Food : </div>
+      <ul class="fix-ul">
+        <li>Keep fresh</li>
+        <li>Kept in sealed air tight containers</li>
+        <li>Easily prepared</li>
+        <li>Expiration date</li>
+      </ul>
+      <br>
+      <div class="tips-header">Clothing & Bedding : </div>
+      <ul class="fix-ul">
+        <li>Always include warm clothing</li>
+        <li>Sleeping bags & mats suited to the weather</li>
+        <li>Use padded ground pads for both comfort and warmth</li>
+        <li>Jackets for 3 days for each person</li>
+      </ul>
+      <br>
+      <div class="tips-header">First Aid and Medications : </div>
+      <ul class="fix-ul">
+        <li>Special needs households should consider additional items</li>
+        <li>Latex gloves</li>
+        <li>Sterile dressings with tape and bandages</li>
+        <li>Cleansing agents</li>
+        <li>Antibiotic ointment</li>
+        <li>Eye wash</li>
+        <li>Thermometer</li>
+        <li>Splinting supplies</li>
+        <li>Scissors and tweezers</li>
+        <li>Aspirin or non-aspirin pain relievers</li>
+        <li>Antacids</li>
+        <li>Anti-diarrheals</li>
+        <li>Benadryl</li>
+      </ul>
+      <br>
+      <div class="tips-header">Miscellaneous Items : </div>
+      <ul class="fix-ul">
+        <li>Flash lights with extra batteries</li>
+        <li>Tools, a wrench or pliers, along with a hammer and screwdrivers</li>
+        <li>Camp knife</li>
+        <li>Matches in a waterproof container</li>
+        <li>Small mirror for signaling or other uses</li>
+        <li>Whistle to signal for help</li>
+        <li>Moist towelettes</li>
+        <li>Garbage bags and buckets (for sanitation, toileting needs, and other uses)</li>
+        <li>Personal hygiene items</li>
+        <li>Household bleach</li>
+        <li>Copies of important personal and family papers</li>
+        <li>Cash</li>
+        <li>Paper & pencil</li>
+        <li>Favorite books, games, or puzzles for all member of the household</li>
+      </ul>
+      <br>
+      <div class="tips-header">Storage : </div>
+      <ul class="fix-ul">
+        <li>Cool, dry, protected place</li>
+        <li>Easy access in an emergency</li>
+      </ul>
+      <br>
+      <div class="tips-header">Jump Bag : </div>
+      <ul class="fix-ul">
+        <li>Prepare an evacuation duffle bag or backpack</li>
+      </ul>
+    </div>
+  </div>
+  <div class="below-operations">
+    <img class="below-single-operation" src="/assets/images/Line.png" />
+    <img class="below-single-operation" (click)="openMemoDialog()" src="/assets/images/Memo.png" />
+    <img class="below-single-operation" onclick='window.print()' src="/assets/images/Print.png" />
+  </div>
+</mat-sidenav-container>

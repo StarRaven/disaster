@@ -39,13 +39,13 @@ export class WaterComponent implements OnInit {
         "data": data,
         "options": {
           "legend": {
-            "display": false,
+            "display": false  ,
             "position": 'bottom'
           },
           "scaleShowLabels" : false,
           "responsive": false,
           "maintainAspectRatio": false,
-          "cutoutPercentage": 50,
+          "cutoutPercentage": 0,
           "animation": {
             "animateScale": true,
             "animateRotate": false

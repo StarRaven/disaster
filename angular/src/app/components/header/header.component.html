@@ -9,8 +9,9 @@
       <div class="header-title-text">Plan</div>
     </div>
     <div class="header-operations">
-      <img src="/assets/images/Account.png" />
-      <img src="/assets/images/Search.png" />
+      <img *ngIf="!global.login" class="header-single-operation" (click)='openLoginDialog()' src="/assets/images/Account.png" />
+      <div *ngIf="global.login" class="username-text">{{global.username}}</div>
+      <img class="header-single-operation" href="www.google.com" src="/assets/images/Search.png" />
     </div>
   </div>
 </div>

@@ -12,7 +12,6 @@
 .form-wrapper {
   width: 750px;
   float: left;
-  padding: 42px 0 42px 100px;
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #b0afaf;
@@ -25,15 +24,15 @@
 .ok-button {
   background: url("/assets/images/Submit.png");
   background-repeat: no-repeat;
-  width: 41px;
-  height: 41px;
+  width: 45px;
+  height: 45px;
   border: none;
 }
 
 .cancel-button {
   background: url("/assets/images/Cancel.png");
   background-repeat: no-repeat;
-  width: 41px;
-  height: 41px;
+  width: 45px;
+  height: 45px;
   border: none;
 }

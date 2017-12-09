@@ -11,23 +11,17 @@
       <div class="content">
         <div class="water-left-content">
           For Drinking
+          <br> For Food Preparation, Sanitation and Other Activities
+          <br> For Pets
           <br>
-          For Food Preparation, Sanitation and Other Activities
-          <br>
-          For Pets
-          <br>
-          <br>
-          Total
+          <br> Total
         </div>
         <div class="water-right-content">
-          100 Gallons
+          {{drinkwater.toFixed(2)}} Gallons
+          <br> {{foodwater.toFixed(2)}} Gallons
+          <br> {{petwater.toFixed(2)}} Gallons
           <br>
-          100 Gallons
-          <br>
-          100 Gallons
-          <br>
-          <br>
-          300 Gallons
+          <br> {{(drinkwater+foodwater+petwater).toFixed(2)}} Gallons
         </div>
       </div>
     </div>
@@ -43,12 +37,6 @@
       <br>
 
     </div>
-    <div class="below-operations">
-      <img class="below-single-operation" src="/assets/images/Line.png" />
-      <img class="below-single-operation" (click)="openMemoDialog()" src="/assets/images/Memo.png" />
-      <img class="below-single-operation" onclick='window.print()' src="/assets/images/Print.png" />
-      <img class="below-single-operation" src="/assets/images/Refresh.png" />
-      <img class="below-single-operation" src="/assets/images/Add.png" />
-    </div>
+    <app-funcbar></app-funcbar>
   </div>
 </mat-sidenav-container>

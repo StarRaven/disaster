@@ -1,20 +1,23 @@
 .half {
-  width: 35%;
-  padding: 0 30px;
+  width: 40%;
+  padding-right: 50px;
 }
 
 .whole {
-  width: 35%;
+  width: 40%;
   display: block;
-  padding: 0 30px;
+  padding-right: 50px;
+}
+
+.form-submit {
+  width: 40%;
+  display: block;
+  padding: 50px 0;
 }
 
 .form-wrapper {
   width: 750px;
   float: left;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #b0afaf;
 }
 
 .mat-form-field {
@@ -35,4 +38,13 @@
   width: 45px;
   height: 45px;
   border: none;
+}
+
+.right-sidebar-button-selected {
+  line-height: 65px;
+  display: block;
+  border: none;
+  background: none;
+  color: #ffffff;
+  font-size: 25px;
 }

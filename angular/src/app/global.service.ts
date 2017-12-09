@@ -13,7 +13,14 @@ export class GlobalService {
     this.username = 'test';
     this.id = 2;
     this.login = true;
-    this.location = 'Pittsburgh';
+    this.location = 'New York';
+    /*
+    this.days = 0;
+    this.username = '';
+    this.id = 0;
+    this.login = false;
+    this.location = '';
+    */
   }
 
 }

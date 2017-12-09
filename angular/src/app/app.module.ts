@@ -27,6 +27,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { GlobalService } from './global.service';
 import { LoginComponent } from './components/login/login.component';
@@ -45,6 +46,9 @@ import { CommunicationComponent } from './components/communication/communication
 import { StorageComponent } from './components/storage/storage.component';
 import { TipsComponent } from './components/tips/tips.component';
 import { MemoComponent } from './components/memo/memo.component';
+import { AuthorityComponent } from './components/authority/authority.component';
+import { ProtectdlgComponent } from './components/protectdlg/protectdlg.component';
+import { UpdatememoComponent } from './components/updatememo/updatememo.component';
 
 
 @NgModule({
@@ -64,7 +68,10 @@ import { MemoComponent } from './components/memo/memo.component';
     CommunicationComponent,
     StorageComponent,
     TipsComponent,
-    MemoComponent
+    MemoComponent,
+    AuthorityComponent,
+    ProtectdlgComponent,
+    UpdatememoComponent
   ],
   imports: [
     BrowserModule,
@@ -92,6 +99,7 @@ import { MemoComponent } from './components/memo/memo.component';
     MatTooltipModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatExpansionModule,
 
     RouterModule.forRoot([
       { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -105,11 +113,14 @@ import { MemoComponent } from './components/memo/memo.component';
       { path: 'storage', component: StorageComponent },
       { path: 'tips', component: TipsComponent },
       { path: 'memo', component: MemoComponent },
+      { path: 'authority', component: AuthorityComponent },
       { path: 'home', component: HomeComponent },
     ])
   ],
   entryComponents: [
     AddmemoComponent,
+    UpdatememoComponent,
+    ProtectdlgComponent,
     LoginComponent,
   ],
   providers: [

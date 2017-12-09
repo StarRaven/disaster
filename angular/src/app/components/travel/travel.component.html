@@ -8,12 +8,12 @@
       Keeping a basic disaster kit in your car means you‘ll be ready whether you‘re home, shopping or at work. Below is a basic 24-hour kit. Add more food and water if your trunk allows.
     </div>
     <div class="travel-tip-wrapper">
-      <mat-checkbox *ngFor="let traveltip of traveltips" [value]="traveltip.id" [(ngModel)]="traveltip.selected" class="travel-select">
+      <mat-checkbox *ngFor="let traveltip of traveltips" [value]="traveltip.id" [(ngModel)]="traveltip.selected" class="travel-select" (change)="update(traveltip)">
         {{ traveltip.name }}
       </mat-checkbox>
     </div>
   </div>
-
+  <app-funcbar></app-funcbar>
   <!--
   <div class="below-operations">
     <img class="below-single-operation" src="/assets/images/Line.png" />

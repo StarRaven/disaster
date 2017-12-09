@@ -1,0 +1,50 @@
+.half {
+  width: 40%;
+  padding-right: 50px;
+}
+
+.whole {
+  width: 40%;
+  display: block;
+  padding-right: 50px;
+}
+
+.form-submit {
+  width: 40%;
+  display: block;
+  padding: 50px 0;
+}
+
+.form-wrapper {
+  width: 750px;
+  float: left;
+}
+
+.mat-form-field {
+  margin: 30px 0;
+}
+
+.ok-button {
+  background: url("/assets/images/Submit.png");
+  background-repeat: no-repeat;
+  width: 45px;
+  height: 45px;
+  border: none;
+}
+
+.cancel-button {
+  background: url("/assets/images/Cancel.png");
+  background-repeat: no-repeat;
+  width: 45px;
+  height: 45px;
+  border: none;
+}
+
+.right-sidebar-button-selected {
+  line-height: 65px;
+  display: block;
+  border: none;
+  background: none;
+  color: #ffffff;
+  font-size: 25px;
+}

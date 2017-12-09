@@ -1,15 +1,66 @@
-
 <app-header></app-header>
 <mat-sidenav-container class="example-container">
   <mat-sidenav mode="side" opened="true" class="example-sidenav">
     <app-sidebar></app-sidebar>
   </mat-sidenav>
   <div class="content-wrapper">
-    <iframe width="100%" height="600px" frameborder="0" style="border:0" [src]=trusturl allowfullscreen></iframe>
+    <div class="left-wrapper">
+      <div class="title-wrapper">
+        <div *ngIf="current_title==''">Communication</div>
+        <div *ngIf="current_title!=''">{{current_title}}</div>
+      </div>
+      <div class="form-wrapper">
+        <form [formGroup]="add_communication" (ngSubmit)="CommunicationAdd()">
+          <div class="content">
+            <br>
+            <br>
+            <div>
+              <mat-form-field class="half">
+                <input matInput formControlName="firstname" placeholder="Enter your first name" required>
+                <mat-icon matSuffix>person</mat-icon>
+                <mat-error>This field is required</mat-error>
+              </mat-form-field>
+              <mat-form-field class="half">
+                <input matInput formControlName="lastname" placeholder="Enter your last name" required>
+                <mat-icon matSuffix>person</mat-icon>
+                <mat-error>This field is required</mat-error>
+              </mat-form-field>
+              <mat-form-field class="whole">
+                <input matInput formControlName="phone" placeholder="Enter your phone number" required>
+                <mat-icon matSuffix>phone</mat-icon>
+                <mat-error>This field is required</mat-error>
+              </mat-form-field>
+              <mat-form-field class="whole">
+                <input matInput formControlName="email" placeholder="Enter your E-mail" required>
+                <mat-icon matSuffix>email</mat-icon>
+                <mat-error>This field is required</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-submit">
+              <button *ngIf="current_title==''" type="submit" [disabled]="( !add_communication.dirty )" class="ok-button">
+          </button>
+              <button *ngIf="current_title!=''" type="button" (click)="update()" class="ok-button">
+          </button>
+              <button *ngIf="current_title!=''" type="button" (click)="delete()" class="ok-button">
+          </button>
+              <button type="button" (click)="reset()" class="cancel-button">
+          </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="right-wrapper">
+      <div class="right-title">Communication Lists</div>
+      <br>
+      <br>
+      <button *ngFor="let communication of communications" [ngClass]="(communication.id==current_id)?'right-sidebar-button-selected':'right-sidebar-button'" (click)="select(communication)">
+        {{ communication.firstname }} {{communication.lastname}}
+      </button>
+      <button class="right-sidebar-button" (click)="addnew()">
+        + New Communication
+      </button>
+    </div>
   </div>
-  <div class="below-operations">
-    <img class="below-single-operation" src="/assets/images/Line.png" />
-    <img class="below-single-operation" (click)="openMemoDialog()" src="/assets/images/Memo.png" />
-    <img class="below-single-operation" onclick='window.print()' src="/assets/images/Print.png" />
-  </div>
+  <app-funcbar></app-funcbar>
 </mat-sidenav-container>

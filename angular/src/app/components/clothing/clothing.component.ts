@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
+import { MatTableDataSource } from '@angular/material';
+import { GlobalService } from '../../global.service';
+import { Clothing } from '../../clothing';
+import { Headers, Http } from '@angular/http';
 
 @Component({
   selector: 'app-clothing',
@@ -8,10 +12,73 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
   styleUrls: ['./clothing.component.scss']
 })
 export class ClothingComponent implements OnInit {
+  displayedColumns = ['type', 'quantity'];
+  dataSource = new MatTableDataSource<Clothing>();
+  clothings: Clothing[] = [];
+  constructor(
+    private http: Http,
+    private global: GlobalService,
+  ) { }
 
-  constructor() { }
+  update(id, qty) {
+    let body = JSON.stringify({ userid: this.global.id, clothingbeddingid: id, quantity: qty });
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    this.http.post('/api/update/userclothingbedding', body, { headers: headers }).subscribe(
+      (jsonData) => {
+        let jsonDataBody = jsonData.json();
+        if (jsonDataBody.status) {
+
+        }
+      },
+      // The 2nd callback handles errors.
+      (err) => console.error(err),
+      // The 3rd callback handles the "complete" event.
+      () => console.log("observable complete")
+    );
+  }
 
   ngOnInit() {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+
+    this.http.get('/api/get/clothingbedding', { headers: headers }).subscribe(
+      (jsonData) => {
+        this.clothings = [];
+        let jsonDataBody = jsonData.json();
+        for (let entry of jsonDataBody) {
+          let r: Clothing = {
+            id: entry[0],
+            type: entry[1],
+            quantity: 0
+          };
+          this.clothings.push(r);
+        };
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+
+        this.http.get('/api/get/clothingbedding/' + this.global.id, { headers: headers }).subscribe(
+          (jsonData) => {
+            let jsonDataBody = jsonData.json();
+            for (let entry of jsonDataBody) {
+              for (let clothing of this.clothings) {
+                if (entry[1] == clothing.id) {
+                  clothing.quantity = entry[2];
+                }
+              }
+            };
+            console.log(this.clothings);
+            this.dataSource = new MatTableDataSource<Clothing>(this.clothings);
+          },
+          // The 2nd callback handles errors.
+          (err) => console.error(err),
+          // The 3rd callback handles the "complete" event.
+          () => console.log("observable complete")
+        );
+      },
+      // The 2nd callback handles errors.
+      (err) => console.error(err),
+      // The 3rd callback handles the "complete" event.
+      () => console.log("observable complete")
+    );
   }
+
 
 }

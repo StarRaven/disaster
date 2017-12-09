@@ -1,4 +1,4 @@
-<form class="addmemo-form" [formGroup]="memo_form" (ngSubmit)="AddMemo()">
+<form class="addmemo-form" [formGroup]="memo_form" (ngSubmit)="UpdateMemo()">
   <br>
   <mat-form-field class="form-input">
     <input matInput formControlName="title" placeholder="Enter your memo title" required>
@@ -10,5 +10,5 @@
     <mat-error>This field is required</mat-error>
   </mat-form-field>
   <br>
-  <button mat-raised-button color="primary" type="submit" [disabled]="( !memo_form.dirty )">Add</button>
+  <button mat-raised-button color="primary" type="submit" [disabled]="( !memo_form.dirty )">Update</button>
 </form>

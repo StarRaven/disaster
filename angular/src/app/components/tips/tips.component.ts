@@ -9,6 +9,10 @@ export class TipsComponent implements OnInit {
 
   constructor() { }
 
+  goTo(location: string): void {
+    window.location.hash = location;
+  }
+
   ngOnInit() {
   }
 

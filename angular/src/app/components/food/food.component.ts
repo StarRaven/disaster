@@ -29,13 +29,24 @@ export class FoodComponent implements OnInit {
   ) { }
 
   update(id, qty) {
+    let body = JSON.stringify({ userid: this.global.id, foodid: id, quantity: qty });
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    this.http.post('/api/update/userfood', body, { headers: headers }).subscribe(
+      (jsonData) => {
+        let jsonDataBody = jsonData.json();
+        if (jsonDataBody.status) {
+
+        }
+      },
+      // The 2nd callback handles errors.
+      (err) => console.error(err),
+      // The 3rd callback handles the "complete" event.
+      () => console.log("observable complete")
+    );
 
     id = id - 1;
     this.foods[id].quantity = qty;
     this.calories[id] = qty * this.foods[id].calories;
-    //console.log(this.foods);
-    //console.log(this.calories);
-    //console.log(this.labels);
     this.total = 0;
     for (let t of this.calories) {
       this.total = this.total + t;
@@ -50,28 +61,7 @@ export class FoodComponent implements OnInit {
           "backgroundColor": this.background
         }]
     };
-/*
-    var chart = new Chart(
-      donutCtx,
-      {
-        "type": 'doughnut',
-        "data": data,
-        "options": {
-          "legend": {
-            "display": false,
-            "position": 'bottom'
-          },
-          "scaleShowLabels": false,
-          "responsive": false,
-          "maintainAspectRatio": false,
-          "cutoutPercentage": 0,
-          "animation": {
-            "animateScale": true,
-            "animateRotate": false
-          }
-        }
-      }
-    );*/
+
     this.chart.data = data;
     this.chart.update();
   }
@@ -156,7 +146,7 @@ export class FoodComponent implements OnInit {
                   "scaleShowLabels": false,
                   "responsive": false,
                   "maintainAspectRatio": false,
-                  "cutoutPercentage": 0,
+                  "cutoutPercentage": 50,
                   "animation": {
                     "animateScale": true,
                     "animateRotate": false
@@ -171,9 +161,6 @@ export class FoodComponent implements OnInit {
           // The 3rd callback handles the "complete" event.
           () => console.log("observable complete")
         );
-
-
-
       },
       // The 2nd callback handles errors.
       (err) => console.error(err),

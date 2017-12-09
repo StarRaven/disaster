@@ -84,6 +84,158 @@ def api_register():
         }
         return jsonify(t)
 
+@app.route('/api/add/memo', methods = ['POST'])
+def api_add_memo():
+    if request.headers['Content-Type'] == 'application/json':
+        json_to_python = json.loads(json.dumps(request.json))
+        print json_to_python
+        userid = json_to_python['userid']
+        title = json_to_python['title']
+        content = json_to_python['content']
+
+        db = mysql.connect()
+        cursor1 = db.cursor()
+        cursor1.execute("INSERT INTO memos (userid, title, content) VALUES ('"+str(userid)+"', '"+str(title)+"', '"+str(content)+"')")
+        db.commit()
+
+        t = {
+            'status' : True
+        }
+        return jsonify(t)
+
+@app.route('/api/update/memo', methods = ['POST'])
+def api_update_memo():
+    if request.headers['Content-Type'] == 'application/json':
+        json_to_python = json.loads(json.dumps(request.json))
+        print json_to_python
+        memoid = json_to_python['memoid']
+        title = json_to_python['title']
+        content = json_to_python['content']
+
+        db = mysql.connect()
+        cursor1 = db.cursor()
+        cursor1.execute("UPDATE memos SET title='"+str(title)+"', content='"+str(content)+"' WHERE memoid='" + str(memoid) + "'")
+        db.commit()
+
+        t = {
+            'status' : True
+        }
+        return jsonify(t)
+
+@app.route('/api/delete/memo', methods = ['POST'])
+def api_delete_memo():
+    if request.headers['Content-Type'] == 'application/json':
+        json_to_python = json.loads(json.dumps(request.json))
+        print json_to_python
+        memoid = json_to_python['memoid']
+
+        db = mysql.connect()
+        cursor1 = db.cursor()
+        cursor1.execute("DELETE FROM memos WHERE memoid = '"+str(memoid)+"'")
+        db.commit()
+
+        t = {
+            'status' : True
+        }
+        return jsonify(t)
+
+@app.route('/api/get/memo', methods = ['GET'])
+def api_memo():
+    cursor = mysql.connect().cursor()
+    cursor.execute("SELECT * from memos")
+    data = cursor.fetchall()
+    return jsonify(data)
+
+@app.route('/api/update/communication', methods = ['POST'])
+def api_update_communication():
+    if request.headers['Content-Type'] == 'application/json':
+        json_to_python = json.loads(json.dumps(request.json))
+        print json_to_python
+        communicationid = json_to_python['communicationid']
+        firstname = json_to_python['firstname']
+        lastname = json_to_python['lastname']
+        phone = json_to_python['phone']
+        email = json_to_python['email']
+
+        db = mysql.connect()
+        cursor1 = db.cursor()
+        cursor1.execute("UPDATE communications SET firstname='"+str(firstname)+"', lastname='"+str(lastname)+"', phone='"+str(phone)+"', email='"+str(email)+"' WHERE communicationid='" + str(communicationid) + "'")
+        db.commit()
+
+        t = {
+            'status' : True
+        }
+        return jsonify(t)
+
+@app.route('/api/add/communication', methods = ['POST'])
+def api_add_communication():
+    if request.headers['Content-Type'] == 'application/json':
+        json_to_python = json.loads(json.dumps(request.json))
+        print json_to_python
+        userid = json_to_python['userid']
+        firstname = json_to_python['firstname']
+        lastname = json_to_python['lastname']
+        phone = json_to_python['phone']
+        email = json_to_python['email']
+
+        db = mysql.connect()
+        cursor1 = db.cursor()
+        cursor1.execute("INSERT INTO communications (userid, firstname, lastname, phone, email ) VALUES ('"+str(userid)+"', '"+str(firstname)+"', '"+str(lastname)+"', '"+str(phone)+"', '"+str(email)+"')")
+        db.commit()
+
+        t = {
+            'status' : True
+        }
+        return jsonify(t)
+
+@app.route('/api/delete/communication', methods = ['POST'])
+def api_delete_communication():
+    if request.headers['Content-Type'] == 'application/json':
+        json_to_python = json.loads(json.dumps(request.json))
+        print json_to_python
+        communicationid = json_to_python['communicationid']
+
+        db = mysql.connect()
+        cursor1 = db.cursor()
+        cursor1.execute("DELETE FROM communications WHERE communicationid = '"+str(communicationid)+"'")
+        db.commit()
+
+        t = {
+            'status' : True
+        }
+        return jsonify(t)
+
+@app.route('/api/get/communication', methods = ['GET'])
+def api_communication():
+    cursor = mysql.connect().cursor()
+    cursor.execute("SELECT * from communications")
+    data = cursor.fetchall()
+    return jsonify(data)
+
+@app.route('/api/update/human', methods = ['POST'])
+def api_update_human():
+    if request.headers['Content-Type'] == 'application/json':
+        json_to_python = json.loads(json.dumps(request.json))
+        print json_to_python
+        humanid = json_to_python['humanid']
+        firstname = json_to_python['firstname']
+        lastname = json_to_python['lastname']
+        gender = json_to_python['gender']
+        birthdate = json_to_python['birthdate']
+        birthdate2 = datetime.strptime(birthdate[:-14], "%Y-%m-%d")
+        phone = json_to_python['phone']
+        health = json_to_python['health']
+
+        db = mysql.connect()
+        cursor1 = db.cursor()
+        cursor1.execute("UPDATE humans SET firstname='"+str(firstname)+"', lastname='"+str(lastname)+"', gender='"+str(gender)+"', birthdate='"+str(birthdate2)+"', phone='"+str(phone)+"', health='"+str(health)+"' WHERE humanid='" + str(humanid) + "'")
+        db.commit()
+
+        t = {
+            'status' : True
+        }
+        return jsonify(t)
+
 @app.route('/api/add/human', methods = ['POST'])
 def api_add_human():
     if request.headers['Content-Type'] == 'application/json':
@@ -108,12 +260,129 @@ def api_add_human():
         }
         return jsonify(t)
 
+@app.route('/api/delete/human', methods = ['POST'])
+def api_delete_human():
+    if request.headers['Content-Type'] == 'application/json':
+        json_to_python = json.loads(json.dumps(request.json))
+        print json_to_python
+        humanid = json_to_python['humanid']
+
+        db = mysql.connect()
+        cursor1 = db.cursor()
+        cursor1.execute("DELETE FROM humans WHERE humanid = '"+str(humanid)+"'")
+        db.commit()
+
+        t = {
+            'status' : True
+        }
+        return jsonify(t)
+
 @app.route('/api/get/human', methods = ['GET'])
 def api_human():
     cursor = mysql.connect().cursor()
     cursor.execute("SELECT * from humans")
     data = cursor.fetchall()
     return jsonify(data)
+
+@app.route('/api/update/pet', methods = ['POST'])
+def api_update_pet():
+    if request.headers['Content-Type'] == 'application/json':
+        json_to_python = json.loads(json.dumps(request.json))
+        print json_to_python
+        petid = json_to_python['petid']
+        petname = json_to_python['petname']
+        pettype = json_to_python['pettype']
+        weight = json_to_python['weight']
+
+        db = mysql.connect()
+        cursor1 = db.cursor()
+        cursor1.execute("UPDATE pets SET petname='"+str(petname)+"', pettype='"+str(pettype)+"', weight='"+str(weight)+"' WHERE petid='" + str(petid) + "'")
+        db.commit()
+
+        t = {
+            'status' : True
+        }
+        return jsonify(t)
+
+@app.route('/api/add/pet', methods = ['POST'])
+def api_add_pet():
+    if request.headers['Content-Type'] == 'application/json':
+        json_to_python = json.loads(json.dumps(request.json))
+        print json_to_python
+        userid = json_to_python['userid']
+        petname = json_to_python['petname']
+        pettype = json_to_python['pettype']
+        weight = json_to_python['weight']
+
+        db = mysql.connect()
+        cursor1 = db.cursor()
+        cursor1.execute("INSERT INTO pets (userid, petname, pettype, weight ) VALUES ('"+str(userid)+"', '"+str(petname)+"', '"+str(pettype)+"', '"+str(weight)+"')")
+        db.commit()
+
+        t = {
+            'status' : True
+        }
+        return jsonify(t)
+
+@app.route('/api/delete/pet', methods = ['POST'])
+def api_delete_pet():
+    if request.headers['Content-Type'] == 'application/json':
+        json_to_python = json.loads(json.dumps(request.json))
+        print json_to_python
+        petid = json_to_python['petid']
+
+        db = mysql.connect()
+        cursor1 = db.cursor()
+        cursor1.execute("DELETE FROM pets WHERE petid = '"+str(petid)+"'")
+        db.commit()
+
+        t = {
+            'status' : True
+        }
+        return jsonify(t)
+
+@app.route('/api/get/pet', methods = ['GET'])
+def api_pet():
+    cursor = mysql.connect().cursor()
+    cursor.execute("SELECT * from pets")
+    data = cursor.fetchall()
+    return jsonify(data)
+
+@app.route('/api/add/travel', methods = ['POST'])
+def api_add_travel():
+    if request.headers['Content-Type'] == 'application/json':
+        json_to_python = json.loads(json.dumps(request.json))
+        print json_to_python
+        userid = json_to_python['userid']
+        traveltipid = json_to_python['traveltipid']
+
+        db = mysql.connect()
+        cursor1 = db.cursor()
+        cursor1.execute("INSERT INTO user_traveltips (userid, traveltipid ) VALUES ('"+str(userid)+"', '"+str(traveltipid)+"')")
+        db.commit()
+
+        t = {
+            'status' : True
+        }
+        return jsonify(t)
+
+@app.route('/api/delete/travel', methods = ['POST'])
+def api_delete_travel():
+    if request.headers['Content-Type'] == 'application/json':
+        json_to_python = json.loads(json.dumps(request.json))
+        print json_to_python
+        userid = json_to_python['userid']
+        traveltipid = json_to_python['traveltipid']
+
+        db = mysql.connect()
+        cursor1 = db.cursor()
+        cursor1.execute("DELETE FROM user_traveltips WHERE userid = '"+str(userid)+"' and traveltipid = '"+str(traveltipid)+"'")
+        db.commit()
+
+        t = {
+            'status' : True
+        }
+        return jsonify(t)
 
 @app.route('/api/get/travel', methods = ['GET'])
 def api_travel():
@@ -128,6 +397,86 @@ def api_user_travel(userid):
     cursor.execute("SELECT * from user_traveltips WHERE userid = '"+str(userid)+"'")
     data = cursor.fetchall()
     return jsonify(data)
+
+@app.route('/api/update/userclothingbedding', methods = ['POST'])
+def api_update_clothingbedding():
+    if request.headers['Content-Type'] == 'application/json':
+        json_to_python = json.loads(json.dumps(request.json))
+        print json_to_python
+        userid = json_to_python['userid']
+        clothingbeddingid = json_to_python['clothingbeddingid']
+        quantity = json_to_python['quantity']
+        if str(quantity)=='0':
+            db = mysql.connect()
+            cursor1 = db.cursor()
+            cursor1.execute("DELETE FROM user_clothing_bedding WHERE userid = '"+str(userid)+"' and clothingbeddingid = '"+str(clothingbeddingid)+"'")
+            db.commit()
+        else:
+            db = mysql.connect()
+            cursor1 = db.cursor()
+            cursor1.execute("SELECT * FROM user_clothing_bedding WHERE userid = '"+str(userid)+"' and clothingbeddingid = '"+str(clothingbeddingid)+"'")
+            data = cursor1.fetchone()
+            if data is None:
+                cursor2 = db.cursor()
+                print data
+                cursor2.execute("INSERT INTO user_clothing_bedding (userid, clothingbeddingid, quantity ) VALUES ('"+str(userid)+"', '"+str(clothingbeddingid)+"', '"+str(quantity)+"')")
+                db.commit()
+            else:
+                cursor2 = db.cursor()
+                cursor2.execute("UPDATE user_clothing_bedding SET quantity='"+str(quantity)+"' WHERE userid='" + str(userid) + "' AND clothingbeddingid='"+str(clothingbeddingid)+"'")
+                db.commit()
+
+        t = {
+            'status' : True
+        }
+        return jsonify(t)
+
+@app.route('/api/get/clothingbedding', methods = ['GET'])
+def api_clothingbedding():
+    cursor = mysql.connect().cursor()
+    cursor.execute("SELECT * from clothing_bedding")
+    data = cursor.fetchall()
+    return jsonify(data)
+
+@app.route('/api/get/clothingbedding/<userid>', methods = ['GET'])
+def api_user_clothingbedding(userid):
+    cursor = mysql.connect().cursor()
+    cursor.execute("SELECT * from user_clothing_bedding WHERE userid = '"+str(userid)+"'")
+    data = cursor.fetchall()
+    return jsonify(data)
+
+@app.route('/api/update/userfood', methods = ['POST'])
+def api_update_food():
+    if request.headers['Content-Type'] == 'application/json':
+        json_to_python = json.loads(json.dumps(request.json))
+        print json_to_python
+        userid = json_to_python['userid']
+        foodid = json_to_python['foodid']
+        quantity = json_to_python['quantity']
+        if str(quantity)=='0':
+            db = mysql.connect()
+            cursor1 = db.cursor()
+            cursor1.execute("DELETE FROM user_food WHERE userid = '"+str(userid)+"' and foodid = '"+str(foodid)+"'")
+            db.commit()
+        else:
+            db = mysql.connect()
+            cursor1 = db.cursor()
+            cursor1.execute("SELECT * FROM user_food WHERE userid = '"+str(userid)+"' and foodid = '"+str(foodid)+"'")
+            data = cursor1.fetchone()
+            if data is None:
+                cursor2 = db.cursor()
+                print data
+                cursor2.execute("INSERT INTO user_food (userid, foodid, quantity ) VALUES ('"+str(userid)+"', '"+str(foodid)+"', '"+str(quantity)+"')")
+                db.commit()
+            else:
+                cursor2 = db.cursor()
+                cursor2.execute("UPDATE user_food SET quantity='"+str(quantity)+"' WHERE userid='" + str(userid) + "' AND foodid='"+str(foodid)+"'")
+                db.commit()
+
+        t = {
+            'status' : True
+        }
+        return jsonify(t)
 
 @app.route('/api/get/food', methods = ['GET'])
 def api_food():

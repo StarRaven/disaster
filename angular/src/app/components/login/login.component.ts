@@ -3,7 +3,8 @@ import { AuthService } from '../../services/auth.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Headers, Http } from '@angular/http';
 import { GlobalService } from '../../global.service';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -12,21 +13,31 @@ import {MatIconModule} from '@angular/material/icon';
   encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
-  login_username: string;
-  login_password: string;
-  register_username: string;
-  register_password: string;
+  login_form: FormGroup;
+  register_form: FormGroup;
   hide1: string;
   hide2: string;
 
   constructor(
     public dialogRef: MatDialogRef<LoginComponent>,
     private http: Http,
+    public fb: FormBuilder,
     private global: GlobalService
-  ) { }
+  ) {
+    this.login_form = new FormGroup({
+      username: new FormControl(null, [Validators.required]),
+      password: new FormControl(null, [Validators.required]),
+    });
+
+    this.register_form = new FormGroup({
+      username: new FormControl(null, [Validators.required]),
+      password: new FormControl(null, [Validators.required]),
+      confirm: new FormControl(null, [Validators.required]),
+    });
+  }
 
   Login(): void {
-    let body = JSON.stringify({ username: this.login_username, password: this.login_password });
+    let body = JSON.stringify({ username: this.login_form.get('username').value, password: this.login_form.get('password').value });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     this.http.post('/api/login', body, { headers: headers }).subscribe(
       (jsonData) => {
@@ -47,7 +58,7 @@ export class LoginComponent implements OnInit {
   }
 
   Register(): void {
-    let body = JSON.stringify({ username: this.register_username, password: this.register_password });
+    let body = JSON.stringify({ username: this.register_form.get('username').value, password: this.register_form.get('password').value });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     this.http.post('/api/register', body, { headers: headers }).subscribe(
       (jsonData) => {
@@ -68,8 +79,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.hide1 = 'visibility_off';
-    //this.hide2 = 'visibility_off';
+    this.hide1 = 'visibility_off';
+    this.hide2 = 'visibility_off';
   }
 
 }

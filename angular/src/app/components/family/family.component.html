@@ -4,88 +4,106 @@
     <app-sidebar></app-sidebar>
   </mat-sidenav>
   <div class="content-wrapper">
-    <div class="form-wrapper">
-      <form [formGroup]="add_family_member" (ngSubmit)="FamilyMemberAdd()">
-        <div class="form-title">Member</div>
-        <br>
-        <br>
-        <mat-radio-group formControlName="kind" style="text-align:left" required>
-          <mat-radio-button value="human" name="human" class="half">Human</mat-radio-button>
-          <mat-radio-button value="pet" name="pet" class="half">Pet</mat-radio-button>
-        </mat-radio-group>
-        <div *ngIf="add_family_member.get('kind').value=='human'">
-          <mat-form-field class="half">
-            <input matInput color="warn" formControlName="firstname" placeholder="Enter your first name" required>
-            <mat-error>This field is required</mat-error>
-          </mat-form-field>
-          <mat-form-field class="half">
-            <input matInput formControlName="lastname" placeholder="Enter your last name" required>
-            <mat-error>This field is required</mat-error>
-          </mat-form-field>
-          <mat-radio-group formControlName="gender" style="text-align:left" required>
-            <mat-radio-button value="male" name="male" class="half">Male</mat-radio-button>
-            <mat-radio-button value="female" name="female" class="half">Female</mat-radio-button>
-          </mat-radio-group>
-          <br>
-          <br>
-          <mat-form-field class="whole">
-            <input matInput formControlName="birthdate" [matDatepicker]="picker" placeholder="Choose your birth date">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-          <mat-form-field class="whole">
-            <input matInput formControlName="phone" placeholder="Enter your phone number" required>
-            <mat-error>This field is required</mat-error>
-          </mat-form-field>
-          <mat-form-field class="whole">
-            <mat-select formControlName="health" placeholder="Health Condition">
-              <mat-option value="healthy">Healthy</mat-option>
-              <mat-option value="ill">Ill</mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <br>
-        <br>
-        <div *ngIf="!check_valid()" class="whole">
-          <button type="submit" class="ok-button">
+    <div class="left-wrapper">
+      <div class="title-wrapper">
+        <div *ngIf="current_title==''">Member</div>
+        <div *ngIf="current_title!=''">{{current_title}}</div>
+      </div>
+      <div class="form-wrapper">
+        <form [formGroup]="add_family_member" (ngSubmit)="FamilyMemberAdd()">
+          <div class="content">
+            <br>
+            <br>
+            <mat-radio-group formControlName="kind" style="text-align:left" required>
+              <mat-radio-button value="human" name="human" class="half">Human</mat-radio-button>
+              <mat-radio-button value="pet" name="pet" class="half">Pet</mat-radio-button>
+            </mat-radio-group>
+            <div *ngIf="add_family_member.get('kind').value=='human'">
+              <mat-form-field class="half">
+                <input matInput formControlName="firstname" placeholder="Enter your first name" required>
+                <mat-icon matSuffix>person</mat-icon>
+                <mat-error>This field is required</mat-error>
+              </mat-form-field>
+              <mat-form-field class="half">
+                <input matInput formControlName="lastname" placeholder="Enter your last name" required>
+                <mat-icon matSuffix>person</mat-icon>
+                <mat-error>This field is required</mat-error>
+              </mat-form-field>
+              <mat-radio-group formControlName="gender" style="text-align:left" required>
+                <mat-radio-button value="male" name="male" class="half">Male</mat-radio-button>
+                <mat-radio-button value="female" name="female" class="half">Female</mat-radio-button>
+              </mat-radio-group>
+              <br>
+              <br>
+              <mat-form-field class="whole">
+                <input matInput formControlName="birthdate" [matDatepicker]="picker" placeholder="Choose your birth date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field class="whole">
+                <input matInput formControlName="phone" placeholder="Enter your phone number" required>
+                <mat-icon matSuffix>phone</mat-icon>
+                <mat-error>This field is required</mat-error>
+              </mat-form-field>
+              <mat-form-field class="whole">
+                <mat-select formControlName="health" placeholder="Health Condition">
+                  <mat-option value="healthy">Healthy</mat-option>
+                  <mat-option value="heart disease">Heart Disease</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div *ngIf="add_family_member.get('kind').value=='pet'">
+              <mat-form-field class="whole">
+                <input matInput formControlName="petname" placeholder="Enter your pet name" required>
+                <mat-icon matSuffix>pets</mat-icon>
+                <mat-error>This field is required</mat-error>
+              </mat-form-field>
+              <mat-form-field class="whole">
+                <input matInput formControlName="weight" placeholder="Enter your pet weight" required>
+                <span matSuffix>kg</span>
+                <mat-error>This field is required</mat-error>
+              </mat-form-field>
+              <mat-form-field class="whole">
+                <mat-select formControlName="pettype" placeholder="Pet Type">
+                  <mat-option value="dog">Dog</mat-option>
+                  <mat-option value="cat">Cat</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div *ngIf="!check_valid()" class="form-submit">
+              <button *ngIf="current_title==''" type="submit" class="ok-button">
           </button>
-          <button (click)="reset()" class="cancel-button">
+              <button *ngIf="current_title!=''" type="button" (click)="update()" class="ok-button">
           </button>
-        </div>
-        <div *ngIf="check_valid()" class="whole">
-          <button class="ok-button" matTooltip="Please fill out the form!">
+              <button *ngIf="current_title!=''" type="button" (click)="delete()" class="ok-button">
           </button>
-          <button (click)="add_family_member.reset();" class="cancel-button">
+              <button type="button" (click)="reset();" class="cancel-button">
           </button>
-        </div>
-        <!--
-      <button mat-raised-button color="primary" type="submit" [disabled]="( checkvalid() || !customer_register_form.dirty || customer_register_form.get('password').value!=customer_register_form.get('confirm').value )">Register</button>
-    -->
-      </form>
+            </div>
+            <div *ngIf="check_valid()" class="form-submit">
+              <button class="ok-button" matTooltip="Please fill out the form!">
+          </button>
+              <button type="button" (click)="reset();" class="cancel-button">
+          </button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
     <div class="right-wrapper">
       <div class="right-title">Member Lists</div>
       <br>
       <br>
-      <button class="right-sidebar-button">
-        + Add Customize Field
+      <button *ngFor="let human of humans" [ngClass]="(human.id==current_human_id)?'right-sidebar-button-selected':'right-sidebar-button'" (click)="selectHuman(human)">
+        {{ human.firstname }} {{human.lastname}}
       </button>
-      <button class="right-sidebar-button">
-        + Add Phone Number
+      <button *ngFor="let pet of pets" [ngClass]="(pet.id==current_pet_id)?'right-sidebar-button-selected':'right-sidebar-button'" (click)="selectPet(pet)">
+        {{ pet.petname }}
       </button>
-      <button class="right-sidebar-button">
-        + Add Pet
-      </button>
-      <button class="right-sidebar-button">
+      <button class="right-sidebar-button" (click)="addnew()">
         + New Member
       </button>
     </div>
   </div>
-  <div class="below-operations">
-    <img class="below-single-operation" src="/assets/images/Line.png" />
-    <img class="below-single-operation" (click)="openMemoDialog()" src="/assets/images/Memo.png" />
-    <img class="below-single-operation" onclick='window.print()' src="/assets/images/Print.png" />
-    <img class="below-single-operation" src="/assets/images/Refresh.png" />
-    <img class="below-single-operation" src="/assets/images/Add.png" />
-  </div>
+  <app-funcbar></app-funcbar>
 </mat-sidenav-container>

@@ -17,6 +17,47 @@ export class TravelComponent implements OnInit {
     private global: GlobalService,
   ) { }
 
+  add(tip){
+    let body = JSON.stringify({ userid: this.global.id, traveltipid: tip.id });
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    this.http.post('/api/add/travel', body, { headers: headers }).subscribe(
+      (jsonData) => {
+        let jsonDataBody = jsonData.json();
+        if (jsonDataBody.status) {
+
+        }
+      },
+      // The 2nd callback handles errors.
+      (err) => console.error(err),
+      // The 3rd callback handles the "complete" event.
+      () => console.log("observable complete")
+    );
+  }
+
+  delete(tip){
+    let body = JSON.stringify({ userid: this.global.id, traveltipid: tip.id });
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    this.http.post('/api/delete/travel', body, { headers: headers }).subscribe(
+      (jsonData) => {
+        let jsonDataBody = jsonData.json();
+        if (jsonDataBody.status) {
+
+        }
+      },
+      // The 2nd callback handles errors.
+      (err) => console.error(err),
+      // The 3rd callback handles the "complete" event.
+      () => console.log("observable complete")
+    );
+  }
+
+  update(tip) {
+    if (tip.selected)
+      this.add(tip)
+    else
+      this.delete(tip);
+  }
+
   getAllTravelTips(): void {
     let headers = new Headers({ 'Content-Type': 'application/json' });
 

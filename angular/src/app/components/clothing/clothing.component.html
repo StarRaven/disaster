@@ -14,34 +14,27 @@
       </div>
     </div>
     <div class="right-wrapper">
-      <div class="clothing-bedding-list">
-        <div class="title-wrapper">
-          Clothing
-        </div>
-        <mat-checkbox class="cb-check-list" [(ngModel)]="Sweater">Sweater</mat-checkbox>
-        <mat-checkbox class="cb-check-list" [(ngModel)]="Gloves">Gloves</mat-checkbox>
-        <mat-checkbox class="cb-check-list" [(ngModel)]="Jacket">Jacket</mat-checkbox>
-        <mat-checkbox class="cb-check-list" [(ngModel)]="Vest">Vest</mat-checkbox>
-        <mat-checkbox class="cb-check-list" [(ngModel)]="Pants">Pants</mat-checkbox>
+      <div class="title-wrapper">
+        Clothing & Bedding
       </div>
-      <div class="clothing-bedding-list">
-        <div class="title-wrapper">
-          Bedding
-        </div>
-        <mat-checkbox class="cb-check-list" [(ngModel)]="Blanket">Blanket</mat-checkbox>
-        <mat-checkbox class="cb-check-list" [(ngModel)]="Quilt">Quilt</mat-checkbox>
-        <mat-checkbox class="cb-check-list" [(ngModel)]="Sheet">Sheet</mat-checkbox>
-        <mat-checkbox class="cb-check-list" [(ngModel)]="Mattress">Mattress</mat-checkbox>
-        <mat-checkbox class="cb-check-list" [(ngModel)]="Duvet">Duvet</mat-checkbox>
-      </div>
+      <mat-table #table1 [dataSource]="dataSource">
+        <ng-container matColumnDef="type">
+          <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="quantity">
+          <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <input class="input-qty" type="number" min='0' max='99' [(ngModel)]="element.quantity" (change)="update(element.id,element.quantity)" width="30px">
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
       <br>
       <br>
       <br>
     </div>
-    <div class="below-operations">
-      <img class="below-single-operation" src="/assets/images/Line.png" />
-      <img class="below-single-operation" (click)="openMemoDialog()" src="/assets/images/Memo.png" />
-      <img class="below-single-operation" onclick='window.print()' src="/assets/images/Print.png" />
-    </div>
+    <app-funcbar></app-funcbar>
   </div>
 </mat-sidenav-container>

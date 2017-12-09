@@ -1,32 +1,42 @@
 <mat-tab-group class="demo-tab-group">
   <mat-tab label="Login">
     <div class="demo-tab-content small-login">
-      <br>
-      <mat-form-field>
-        <input matInput [(ngModel)]="login_username" placeholder="Enter your username">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput [(ngModel)]="login_password" placeholder="Enter your password" [type]="hide1 ? 'password' : 'text'">
-        <mat-icon matSuffix (click)="hide1 = !hide1">{{hide1 ? 'visibility' : 'visibility_off'}}</mat-icon>
-      </mat-form-field>
-      <br>
-      <br>
-      <button mat-raised-button color="primary" (click)="Login()">Login</button>
+      <form [formGroup]="login_form" (ngSubmit)="Login()">
+        <br>
+        <mat-form-field class="form-input">
+          <input matInput formControlName="username" placeholder="Enter your username" required>
+          <mat-error>This field is required</mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-input">
+          <input matInput formControlName="password" placeholder="Enter your password" [type]="hide2 ? 'password' : 'text'" required>
+          <mat-icon matSuffix (click)="hide2 = !hide2">{{hide2 ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </mat-form-field>
+        <br>
+        <button mat-raised-button color="primary" type="submit" [disabled]="( !login_form.dirty )">Login</button>
+      </form>
     </div>
   </mat-tab>
   <mat-tab label="Register">
     <div class="demo-tab-content small-login">
-      <br>
-      <mat-form-field>
-        <input matInput [(ngModel)]="register_username" placeholder="Enter your username">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput [(ngModel)]="register_password" placeholder="Enter your password" [type]="hide2 ? 'password' : 'text'">
-        <mat-icon matSuffix (click)="hide2 = !hide2">{{hide2 ? 'visibility' : 'visibility_off'}}</mat-icon>
-      </mat-form-field>
-      <br>
-      <br>
-      <button mat-raised-button color="primary" (click)="Register()">Register</button>
+      <form [formGroup]="register_form" (ngSubmit)="Register()">
+        <br>
+        <mat-form-field class="form-input">
+          <input matInput formControlName="username" placeholder="Enter your username" required>
+          <mat-error>This field is required</mat-error>
+        </mat-form-field>
+        <mat-form-field class="form-input">
+          <input matInput formControlName="password" placeholder="Enter your password" [type]="hide2 ? 'password' : 'text'" required>
+          <mat-icon matSuffix (click)="hide2 = !hide2">{{hide2 ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </mat-form-field>
+        <mat-form-field class="form-input">
+          <input matInput formControlName="confirm" placeholder="Re-Enter your password" [type]="hide2 ? 'password' : 'text'" required>
+          <mat-hint *ngIf="register_form.get('password').value!=register_form.get('confirm').value">
+            Password does not match.
+          </mat-hint>
+        </mat-form-field>
+        <br>
+        <button mat-raised-button color="primary" type="submit" [disabled]="( !register_form.dirty || register_form.get('password').value!=register_form.get('confirm').value )">Register</button>
+      </form>
     </div>
   </mat-tab>
 </mat-tab-group>

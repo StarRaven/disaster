@@ -21,6 +21,9 @@ export class FoodComponent implements OnInit {
   total: number;
   background: string[] = [];
 
+  pet: number;
+  need: number;
+
   chart: any;
 
   constructor(
@@ -66,7 +69,46 @@ export class FoodComponent implements OnInit {
     this.chart.update();
   }
 
+  cal_need() {
+    this.need = 0;
+    this.pet = 0;
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+
+    this.http.get('/api/get/human', { headers: headers }).subscribe(
+      (jsonData) => {
+        let jsonDataBody = jsonData.json();
+        for (let entry of jsonDataBody) {
+          if (entry[4] == 'male')
+            this.need = this.need + 2500;
+          else if (entry[4] == 'female')
+            this.need = this.need + 2000;
+        };
+        this.need = this.need * this.global.days;
+      },
+      // The 2nd callback handles errors.
+      (err) => console.error(err),
+      // The 3rd callback handles the "complete" event.
+      () => console.log("observable complete")
+    );
+
+    this.http.get('/api/get/pet', { headers: headers }).subscribe(
+      (jsonData) => {
+        let jsonDataBody = jsonData.json();
+        for (let entry of jsonDataBody) {
+          this.pet = this.pet + entry[4] * 0.33;
+        };
+        this.pet = this.pet * this.global.days;
+      },
+      // The 2nd callback handles errors.
+      (err) => console.error(err),
+      // The 3rd callback handles the "complete" event.
+      () => console.log("observable complete")
+    );
+  }
+
   ngOnInit() {
+    this.cal_need();
+
     this.total = 0;
     this.background = [];
     this.background.push("#aaaaaa");

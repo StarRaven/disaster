@@ -47,8 +47,17 @@
               </mat-form-field>
               <mat-form-field class="whole">
                 <mat-select formControlName="health" placeholder="Health Condition">
-                  <mat-option value="healthy">Healthy</mat-option>
-                  <mat-option value="heart disease">Heart Disease</mat-option>
+                  <mat-option value="Healthy">Healthy</mat-option>
+                  <mat-option value="Hepatitis">Hepatitis</mat-option>
+                  <mat-option value="Arrhythmia">Arrhythmia</mat-option>
+                  <mat-option value="Diabetes">Diabetes</mat-option>
+                  <mat-option value="Epilepsy">Epilepsy</mat-option>
+                  <mat-option value="Arthritis">Arthritis</mat-option>
+                  <mat-option value="Rheumatism">Rheumatism</mat-option>
+                  <mat-option value="Septicemia">Septicemia</mat-option>
+                  <mat-option value="Anemia">Anemia</mat-option>
+                  <mat-option value="Smallpox">Smallpox</mat-option>
+                  <mat-option value="Pharyngitis">Pharyngitis</mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
@@ -71,19 +80,19 @@
               </mat-form-field>
             </div>
             <div *ngIf="!check_valid()" class="form-submit">
-              <button *ngIf="current_title==''" type="submit" class="ok-button">
+              <button *ngIf="current_title==''" type="submit" class="ok-button" matTooltip="Add information">
           </button>
-              <button *ngIf="current_title!=''" type="button" (click)="update()" class="ok-button">
+              <button *ngIf="current_title!=''" type="button" (click)="update()" class="ok-button" matTooltip="Update information">
           </button>
-              <button *ngIf="current_title!=''" type="button" (click)="delete()" class="ok-button">
+              <button *ngIf="current_title!=''" type="button" (click)="delete()" class="ok-button" matTooltip="Delete information">
           </button>
-              <button type="button" (click)="reset();" class="cancel-button">
+              <button type="button" (click)="reset();" class="cancel-button" matTooltip="Reset the form">
           </button>
             </div>
             <div *ngIf="check_valid()" class="form-submit">
               <button class="ok-button" matTooltip="Please fill out the form!">
           </button>
-              <button type="button" (click)="reset();" class="cancel-button">
+              <button type="button" (click)="reset();" class="cancel-button" matTooltip="Reset the form">
           </button>
             </div>
           </div>
@@ -105,5 +114,4 @@
       </button>
     </div>
   </div>
-  <app-funcbar></app-funcbar>
 </mat-sidenav-container>

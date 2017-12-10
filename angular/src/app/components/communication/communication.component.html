@@ -37,13 +37,13 @@
               </mat-form-field>
             </div>
             <div class="form-submit">
-              <button *ngIf="current_title==''" type="submit" [disabled]="( !add_communication.dirty )" class="ok-button">
+              <button *ngIf="current_title==''" type="submit" [disabled]="( !add_communication.dirty || !add_communication.valid )" class="ok-button" matTooltip="Add communication">
           </button>
-              <button *ngIf="current_title!=''" type="button" (click)="update()" class="ok-button">
+              <button *ngIf="current_title!=''" type="button" (click)="update()" class="ok-button" matTooltip="Update communication">
           </button>
-              <button *ngIf="current_title!=''" type="button" (click)="delete()" class="ok-button">
+              <button *ngIf="current_title!=''" type="button" (click)="delete()" class="ok-button" matTooltip="Delete communication">
           </button>
-              <button type="button" (click)="reset()" class="cancel-button">
+              <button type="button" (click)="reset()" class="cancel-button" matTooltip="Reset the form">
           </button>
             </div>
           </div>
@@ -62,5 +62,4 @@
       </button>
     </div>
   </div>
-  <app-funcbar></app-funcbar>
 </mat-sidenav-container>

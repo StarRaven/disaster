@@ -14,18 +14,18 @@
             <mat-header-cell *matHeaderCellDef> Food Type </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
           </ng-container>
-          <ng-container matColumnDef="calories">
-            <mat-header-cell *matHeaderCellDef> Calories </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.calories}} {{element.servings}} </mat-cell>
-          </ng-container>
           <ng-container matColumnDef="quantity">
             <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
             <mat-cell *matCellDef="let element">
               <input class="input-qty" type="number" min='0' max='99' [(ngModel)]="element.quantity" (change)="update(element.id,element.quantity)" width="30px">
             </mat-cell>
           </ng-container>
+          <ng-container matColumnDef="calories">
+            <mat-header-cell *matHeaderCellDef> Calories </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.calories}} {{element.servings}} </mat-cell>
+          </ng-container>
           <ng-container matColumnDef="total">
-            <mat-header-cell *matHeaderCellDef> Total Calories </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> Sum </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.calories*element.quantity}} </mat-cell>
           </ng-container>
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -44,10 +44,12 @@
       <br>
       <br>
       <a class="right-sidebar-button">
-      Total Calories : {{total}}
+      Current Calories : {{total}}
+      <br>
+      Calories Suggested : {{need}}
+      <hr>
+      {{pet.toFixed(2)}} Cup (8oz.) Pet Food
     </a>
     </div>
   </div>
-  <app-funcbar></app-funcbar>
-
 </mat-sidenav-container>

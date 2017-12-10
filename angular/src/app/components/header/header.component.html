@@ -9,9 +9,20 @@
       <div class="header-title-text">Plan</div>
     </div>
     <div class="header-operations">
-      <img *ngIf="!global.login" class="header-single-operation" (click)='openLoginDialog()' src="/assets/images/Account.png" />
-      <div *ngIf="global.login" class="username-text">{{global.username}}</div>
-      <img class="header-single-operation" href="www.google.com" src="/assets/images/Search.png" />
+      <img *ngIf="!global.login" class="header-single-operation" (click)='openLoginDialog()' src="/assets/images/Account.png" matTooltip="Login or Register"/>
+      <div *ngIf="global.login">
+        <button mat-icon-button class="username-text" [matMenuTriggerFor]="menu">
+          {{global.username}}
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="Logout()">
+            <span>Logout</span>
+          </button>
+        </mat-menu>
+      </div>
+      <img src="/assets/images/Line.png" />
+      <img class="header-single-operation" (click)="openMemoDialog()" src="/assets/images/Memo.png" matTooltip="Add memo"/>
+      <img class="header-single-operation" onclick='window.print()' src="/assets/images/Print.png" matTooltip="Print"/>
     </div>
   </div>
 </div>

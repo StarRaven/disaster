@@ -3,6 +3,7 @@ import { HeaderComponent } from '../header/header.component';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GlobalService } from '../../global.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private router: Router,
     private global: GlobalService,
+    public snackBar: MatSnackBar,
   ) {
     this.disaster_date = new FormGroup({
       disaster: new FormControl(null, [Validators.required]),
@@ -28,7 +30,31 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  checkLogin(): boolean {
+    if (!this.global.login) {
+      this.snackBar.open('Please Log in first','x', {
+        duration: 2000,
+      });
+      return false;
+    }
+    return true;
+  }
+
+  checkFill(): boolean {
+    if ((!this.disaster_date.get('startdate').value) || (!this.disaster_date.get('enddate').value) || (!this.disaster_date.get('disaster').value)) {
+      this.snackBar.open('Please fill out all the blanks','x', {
+        duration: 2000,
+      });
+      return false;
+    }
+    return true;
+  }
+
   DisasterDate() {
+    if (!this.checkLogin())
+      return;
+    if (!this.checkFill())
+      return;
     this.start = this.disaster_date.get('startdate').value;
     this.end = this.disaster_date.get('enddate').value;
     let s = + this.start;

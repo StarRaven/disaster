@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
-import { FuncbarComponent } from '../funcbar/funcbar.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ProtectdlgComponent } from '../protectdlg/protectdlg.component';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';

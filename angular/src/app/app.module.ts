@@ -28,6 +28,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { GlobalService } from './global.service';
 import { LoginComponent } from './components/login/login.component';
@@ -38,7 +39,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { ClothingComponent } from './components/clothing/clothing.component';
 import { WaterComponent } from './components/water/water.component';
 import { HomeComponent } from './components/home/home.component';
-import { FuncbarComponent } from './components/funcbar/funcbar.component';
 import { AddmemoComponent } from './components/addmemo/addmemo.component';
 import { FoodComponent } from './components/food/food.component';
 import { TravelComponent } from './components/travel/travel.component';
@@ -61,7 +61,6 @@ import { UpdatememoComponent } from './components/updatememo/updatememo.componen
     ClothingComponent,
     WaterComponent,
     HomeComponent,
-    FuncbarComponent,
     AddmemoComponent,
     FoodComponent,
     TravelComponent,
@@ -100,6 +99,7 @@ import { UpdatememoComponent } from './components/updatememo/updatememo.componen
     MatDatepickerModule,
     MatNativeDateModule,
     MatExpansionModule,
+    MatSnackBarModule,
 
     RouterModule.forRoot([
       { path: '', redirectTo: '/home', pathMatch: 'full' },

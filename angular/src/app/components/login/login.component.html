@@ -12,7 +12,7 @@
           <mat-icon matSuffix (click)="hide2 = !hide2">{{hide2 ? 'visibility' : 'visibility_off'}}</mat-icon>
         </mat-form-field>
         <br>
-        <button mat-raised-button color="primary" type="submit" [disabled]="( !login_form.dirty )">Login</button>
+        <button mat-raised-button color="accent" type="submit" [disabled]="( !login_form.dirty || !login_form.valid )">Login</button>
       </form>
     </div>
   </mat-tab>
@@ -35,7 +35,7 @@
           </mat-hint>
         </mat-form-field>
         <br>
-        <button mat-raised-button color="primary" type="submit" [disabled]="( !register_form.dirty || register_form.get('password').value!=register_form.get('confirm').value )">Register</button>
+        <button mat-raised-button color="accent" type="submit" [disabled]="( !register_form.dirty || !register_form.valid || register_form.get('password').value!=register_form.get('confirm').value )">Register</button>
       </form>
     </div>
   </mat-tab>

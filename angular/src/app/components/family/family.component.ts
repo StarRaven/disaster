@@ -42,6 +42,8 @@ export class FamilyComponent implements OnInit {
   }
 
   check_valid(): boolean {
+    if (!this.add_family_member.get('kind').value)
+      return true;
     if (this.add_family_member.get('kind').value == 'human') {
       if (!this.add_family_member.get('firstname').value)
         return true;

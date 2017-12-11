@@ -111,20 +111,20 @@ export class FoodComponent implements OnInit {
 
     this.total = 0;
     this.background = [];
-    this.background.push("#aaaaaa");
-    this.background.push("#a9a9a9");
-    this.background.push("#a8a9a9");
-    this.background.push("#a7a9a9");
-    this.background.push("#a6a9a9");
-    this.background.push("#a5a9a9");
-    this.background.push("#a4a9a9");
-    this.background.push("#a3a9a9");
-    this.background.push("#a2a9a9");
-    this.background.push("#a1a9a9");
-    this.background.push("#a6a6a6");
-    this.background.push("#a3a3a3");
-    this.background.push("#9294de");
-    this.background.push("#92d5dd");
+    this.background.push("#e1e1e1");
+    this.background.push("#fdf18b");
+    this.background.push("#dee7ab");
+    this.background.push("#bad9b2");
+    this.background.push("#84c4b6");
+    this.background.push("#6bb7d1");
+    this.background.push("#84acd1");
+    this.background.push("#a2a6d5");
+    this.background.push("#ce9ec6");
+    this.background.push("#eba6ad");
+    this.background.push("#f8aa9e");
+    this.background.push("#f3a27a");
+    this.background.push("#ffd89d");
+    this.background.push("#ffffff");
     let headers = new Headers({ 'Content-Type': 'application/json' });
 
     this.http.get('/api/get/food', { headers: headers }).subscribe(

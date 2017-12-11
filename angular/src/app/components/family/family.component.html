@@ -80,20 +80,16 @@
               </mat-form-field>
             </div>
             <div *ngIf="!check_valid()" class="form-submit">
-              <button *ngIf="current_title==''" type="submit" class="ok-button" matTooltip="Add information">
-          </button>
-              <button *ngIf="current_title!=''" type="button" (click)="update()" class="ok-button" matTooltip="Update information">
-          </button>
-              <button *ngIf="current_title!=''" type="button" (click)="delete()" class="ok-button" matTooltip="Delete information">
-          </button>
-              <button type="button" (click)="reset();" class="cancel-button" matTooltip="Reset the form">
-          </button>
+              <button *ngIf="current_title==''" type="submit" class="form-button ok" matTooltip="Add information"></button>
+              <button *ngIf="current_title!=''" type="button" (click)="update()" class="form-button update" matTooltip="Update information"></button>
+              <button *ngIf="current_title!=''" type="button" (click)="delete()" class="form-button delete" matTooltip="Delete information"></button>
+              <button type="button" (click)="reset();" class="form-button reset" matTooltip="Reset the form"></button>
             </div>
             <div *ngIf="check_valid()" class="form-submit">
-              <button class="ok-button" matTooltip="Please fill out the form!">
-          </button>
-              <button type="button" (click)="reset();" class="cancel-button" matTooltip="Reset the form">
-          </button>
+              <button *ngIf="current_title==''" type="button" class="form-button ok-dark" matTooltip="Please fill out the form!"></button>
+              <button *ngIf="current_title!=''" type="button" class="form-button update-dark" matTooltip="Please fill out the form!"></button>
+              <button *ngIf="current_title!=''" type="button" (click)="delete()" class="form-button delete" matTooltip="Delete information"></button>
+              <button type="button" (click)="reset();" class="form-button reset" matTooltip="Reset the form"></button>
             </div>
           </div>
         </form>
@@ -103,14 +99,17 @@
       <div class="right-title">Member Lists</div>
       <br>
       <br>
-      <button *ngFor="let human of humans" [ngClass]="(human.id==current_human_id)?'right-sidebar-button-selected':'right-sidebar-button'" (click)="selectHuman(human)">
+      <button *ngFor="let human of humans" [ngClass]="(human.id==current_human_id)?'right-sidebar-button-selected':'right-sidebar-button'" (click)="selectHuman(human)" matTooltip="Select to update information">
+        <img class="select-member" src="/assets/images/Arrow.png"/>
         {{ human.firstname }} {{human.lastname}}
       </button>
-      <button *ngFor="let pet of pets" [ngClass]="(pet.id==current_pet_id)?'right-sidebar-button-selected':'right-sidebar-button'" (click)="selectPet(pet)">
+      <button *ngFor="let pet of pets" [ngClass]="(pet.id==current_pet_id)?'right-sidebar-button-selected':'right-sidebar-button'" (click)="selectPet(pet)" matTooltip="Select to update information">
+          <img class="select-member" src="/assets/images/Arrow.png"/>
         {{ pet.petname }}
       </button>
-      <button class="right-sidebar-button" (click)="addnew()">
-        + New Member
+      <button class="right-sidebar-button" (click)="addnew()" matTooltip="Add new member">
+          <img class="select-member" src="/assets/images/Add.png"/>
+        New Member
       </button>
     </div>
   </div>

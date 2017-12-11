@@ -10,7 +10,6 @@
 }
 
 .form-submit {
-  width: 40%;
   display: block;
   padding: 50px 0;
 }
@@ -24,21 +23,36 @@
   margin: 30px 0;
 }
 
-.ok-button {
-  background: url("/assets/images/Submit.png");
+.form-button {
   background-repeat: no-repeat;
-  width: 45px;
-  height: 45px;
+  width: 96px;
+  height: 40px;
   border: none;
-  margin-right: 10px;
+  margin-right: 13px;
 }
 
-.cancel-button {
-  background: url("/assets/images/Cancel.png");
-  background-repeat: no-repeat;
-  width: 45px;
-  height: 45px;
-  border: none;
+.ok {
+  background: url("/assets/images/Save.png");
+}
+
+.ok-dark {
+  background: url("/assets/images/Save_Dark.png");
+}
+
+.update {
+  background: url("/assets/images/Update.png");
+}
+
+.update-dark {
+  background: url("/assets/images/Update_Dark.png");
+}
+
+.delete {
+  background: url("/assets/images/Delete.png");
+}
+
+.reset {
+  background: url("/assets/images/Clear.png");
 }
 
 .right-sidebar-button-selected {
@@ -48,4 +62,8 @@
   background: none;
   color: #ffffff;
   font-size: 25px;
+}
+
+.select-member{
+  margin-bottom: -4px;
 }

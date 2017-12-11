@@ -84,13 +84,13 @@
   <div class="right-wrapper">
     <div class="right-title">Catalog</div>
     <br>
-    <a class="catalog" (click)="goTo('water')">Water</a>
-    <a class="catalog" (click)="goTo('food')">Food</a>
-    <a class="catalog" (click)="goTo('clothing')">Clothing & Bedding</a>
-    <a class="catalog" (click)="goTo('med')">First Aid and Medications</a>
-    <a class="catalog" (click)="goTo('miscellaneous')">Miscellaneous Items</a>
-    <a class="catalog" (click)="goTo('storage')">Storage</a>
-    <a class="catalog" (click)="goTo('bag')">Jump Bag</a>
+    <div class="catalog" (click)="goTo('water')" matTooltip="Jump to section Water"><img class="select-member" src="/assets/images/Arrow.png"/>Water</div>
+    <div class="catalog" (click)="goTo('food')" matTooltip="Jump to section Food"><img class="select-member" src="/assets/images/Arrow.png"/>Food</div>
+    <div class="catalog" (click)="goTo('clothing')" matTooltip="Jump to section Clothing & Bedding"><img class="select-member" src="/assets/images/Arrow.png"/>Clothing & Bedding</div>
+    <div class="catalog" (click)="goTo('med')" matTooltip="Jump to section First Aid and Medications"><img class="select-member" src="/assets/images/Arrow.png"/>First Aid and Medications</div>
+    <div class="catalog" (click)="goTo('miscellaneous')" matTooltip="Jump to section Miscellaneous Items"><img class="select-member" src="/assets/images/Arrow.png"/>Miscellaneous Items</div>
+    <div class="catalog" (click)="goTo('storage')" matTooltip="Jump to section Storage"><img class="select-member" src="/assets/images/Arrow.png"/>Storage</div>
+    <div class="catalog" (click)="goTo('bag')" matTooltip="Jump to section Jump Bag"><img class="select-member" src="/assets/images/Arrow.png"/>Jump Bag</div>
   </div>
   </div>
 </mat-sidenav-container>

@@ -11,7 +11,9 @@
             {{memo.title}}
           </mat-panel-title>
         </mat-expansion-panel-header>
-        {{memo.content}}
+        <div class="memo-content">
+          {{memo.content}}
+        </div>
         <br>
         <br>
         <button mat-raised-button color="accent" (click)="update(memo)">Update</button>
